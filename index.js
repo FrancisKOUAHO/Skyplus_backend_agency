@@ -33,7 +33,7 @@ app.use(morgan("dev")); // configire morgan
 
 // define first route
 app.get("/", (req, res) => {
-  console.log("Bonjour, les Skuplusien");
+  res.send("Bonjour, les Skuplusien");
 });
 
 const userRoutes = require("./api/user/route/user"); //bring in our user routes
