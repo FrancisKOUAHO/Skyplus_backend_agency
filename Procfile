@@ -1,1 +1,1 @@
-web: yarn run nodemon server.js
+web: npm serve
