@@ -4,14 +4,14 @@ const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const config = require("./config/db");
+require('dotenv').config()
 
 const app = express();
 
 //configure database and mongoose
 mongoose.set("useCreateIndex", true);
 mongoose
-  .connect(config.database, {
+  .connect(process.env.MONGO_DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
