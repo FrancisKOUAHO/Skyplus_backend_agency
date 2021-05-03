@@ -1,27 +1,44 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const cors = require('cors')
-const cookieParser = require('cookie-parser')
+const express = require("express");
+const PORT = process.env.PORT || 3001;
+const morgan = require("morgan");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const config = require("./config/db");
 
-mongoose.connect("mongodb+srv://Francis:WAIRECRAFFTERLOUANNE2020@skyplus.e0y0i.mongodb.net/agencyskyplus", {
+const app = express();
+
+//configure database and mongoose
+mongoose.set("useCreateIndex", true);
+mongoose
+  .connect(config.database, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-}, () => {
-    console.log('connected to the database')
-})
+  })
+  .then(() => {
+    console.log("La base de données est connectée");
+  })
+  .catch(err => {
+    console.log({ database_error: err });
+  });
+// db configuaration ends here
+//registering cors
+app.use(cors());
+//configure body parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+//configure body-parser ends here
 
-const routes = require('./routes/routes')
+app.use(morgan("dev")); // configire morgan
 
-app = express()
+// define first route
+app.get("/", (req, res) => {
+  console.log("Bonjour, les Skuplusien");
+});
 
-app.use(cookieParser())
-app.use(cors({
-    credentials: true,
-    origin: ['http://localhost:3000', 'http://localhost:8080', 'http://localhost:4200']
-}))
+const userRoutes = require("./api/user/route/user"); //bring in our user routes
+app.use("/user", userRoutes);
 
-app.use(express.json())
-
-app.use('/api', routes)
-
-app.listen(3001)
+app.listen(PORT, () => {
+  console.log(`L'application fonctionne sur le port ${PORT}`);
+});
