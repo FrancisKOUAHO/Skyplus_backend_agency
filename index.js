@@ -37,7 +37,9 @@ app.get("/", (req, res) => {
 });
 
 const userRoutes = require("./api/user/route/user"); //bring in our user routes
+const clientRoutes = require("./api/client/route/client"); //bring in our user routes
 app.use("/user", userRoutes);
+app.use("/client", clientRoutes);
 
 app.listen(PORT, () => {
   console.log(`L'application fonctionne sur le port ${PORT}`);

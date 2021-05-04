@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const clientSchema = mongoose.Schema({
+const Schema = mongoose.Schema;
+const clientSchema = new Schema({
     name: {
         type: String,
     },
@@ -20,9 +21,4 @@ const clientSchema = mongoose.Schema({
     }
 });
 
-clientSchema.pre("save", async function(next) {
-    next();
-});
-
-const Client = mongoose.model("Client", clientSchema);
-module.exports = Client;
+module.exports = mongoose.model("Client", clientSchema);
