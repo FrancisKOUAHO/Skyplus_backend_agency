@@ -1,6 +1,4 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
 const clientSchema = mongoose.Schema({
     name: {
         type: String,
@@ -20,6 +18,10 @@ const clientSchema = mongoose.Schema({
     address: {
         type: String,
     }
+});
+
+clientSchema.pre("save", async function(next) {
+    next();
 });
 
 const Client = mongoose.model("Client", clientSchema);
