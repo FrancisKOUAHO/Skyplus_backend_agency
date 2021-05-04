@@ -18,6 +18,12 @@ const clientSchema = new Schema({
     },
     address: {
         type: String,
+    },
+    phone: {
+        type: String,
+    },
+    project: {
+        type: String,
     }
 });
 
