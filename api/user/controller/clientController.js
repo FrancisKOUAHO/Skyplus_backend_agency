@@ -2,8 +2,6 @@ const Client = require("../model/Client");
 
 exports.registerNewClient = async (req, res) => {
     try {
-        let isClient = await Client.find({ email: req.body.email });
-        console.log(isClient);
         const client = new Client({
             name: req.body.name,
             email: req.body.email,
