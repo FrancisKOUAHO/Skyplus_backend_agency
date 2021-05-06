@@ -2,6 +2,7 @@ const express = require("express");
 const PORT = process.env.PORT || 3001;
 const morgan = require("morgan");
 const cors = require("cors");
+methodOverride = require('method-override');
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require('dotenv').config()
@@ -28,6 +29,7 @@ app.use(cors());
 //configure body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(methodOverride());
 //configure body-parser ends here
 
 app.use(morgan("dev")); // configire morgan
