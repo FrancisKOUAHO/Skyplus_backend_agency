@@ -1,5 +1,5 @@
 const Client = require("../model/Charge");
-import stripe from 'stripe'
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 // Create a new charge
 exports.createCharge = (req, res, next) => {
