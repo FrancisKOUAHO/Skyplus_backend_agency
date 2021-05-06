@@ -2,6 +2,7 @@ const express = require("express");
 const PORT = process.env.PORT || 3001;
 const morgan = require("morgan");
 const cors = require("cors");
+methodOverride = require('method-override');
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 require('dotenv').config()
@@ -21,12 +22,14 @@ mongoose
   .catch(err => {
     console.log({ database_error: err });
   });
-// db configuaration ends here
+
+var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 //registering cors
 app.use(cors());
 //configure body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(methodOverride());
 //configure body-parser ends here
 
 app.use(morgan("dev")); // configire morgan
@@ -38,8 +41,10 @@ app.get("/", (req, res) => {
 
 const userRoutes = require("./api/user/route/user"); //bring in our user routes
 const clientRoutes = require("./api/client/route/client"); //bring in our user routes
+const chargeRoutes = require("./api/charge/route/charge")
 app.use("/user", userRoutes);
 app.use("/client", clientRoutes);
+app.use("/charge", chargeRoutes);
 
 app.listen(PORT, () => {
   console.log(`L'application fonctionne sur le port ${PORT}`);
