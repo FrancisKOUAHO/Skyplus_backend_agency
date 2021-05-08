@@ -18,8 +18,8 @@ exports.createCheckoutSession = async (req, res) => {
       // the actual Session ID is returned in the query parameter when your customer
       // is redirected to the success page.
       success_url:
-        'http://localhost:8080/success?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'https://example.com/canceled.html',
+        'http://localhost:8080/paiement-reussi',
+      cancel_url: 'http://localhost:8080/echec-paiement',
     });
 
     res.send({
