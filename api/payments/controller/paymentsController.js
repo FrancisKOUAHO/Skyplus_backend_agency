@@ -18,8 +18,8 @@ exports.createCheckoutSession = async (req, res) => {
       // the actual Session ID is returned in the query parameter when your customer
       // is redirected to the success page.
       success_url:
-        'https://agencyskyplus.herokuapp.com/success?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: 'https://agencyskyplus.herokuapp.com/payement-refuser',
+        'https://agencyskyplus.herokuapp.com/paiement-reussi?session_id={CHECKOUT_SESSION_ID}',
+      cancel_url: 'https://agencyskyplus.herokuapp.com/echec-paiement',
     });
 
     res.send({
