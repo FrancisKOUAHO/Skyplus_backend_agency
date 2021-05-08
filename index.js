@@ -41,6 +41,7 @@ app.get('/', (req, res) => {
 
 const userRoutes = require('./api/user/route/user'); //bring in our user routes
 const clientRoutes = require('./api/client/route/client'); //bring in our user routes
+
 const paymentRoutes = require('./api/payments/route/payment'); //bring in our payments routes
 
 app.use('/user', userRoutes);

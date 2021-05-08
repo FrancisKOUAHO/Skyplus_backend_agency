@@ -18,8 +18,8 @@ exports.createCheckoutSession = async (req, res) => {
       // the actual Session ID is returned in the query parameter when your customer
       // is redirected to the success page.
       success_url:
-        'https://skyplus-6wnxwaj13-naori-uchiwa.vercel.app/paiement-reussi/{CHECKOUT_SESSION_ID}',
-      cancel_url: 'https://skyplus-6wnxwaj13-naori-uchiwa.vercel.app/echec-paiement',
+        'http://localhost:8080/success?session_id={CHECKOUT_SESSION_ID}',
+      cancel_url: 'https://example.com/canceled.html',
     });
 
     res.send({
