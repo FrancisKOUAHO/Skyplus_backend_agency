@@ -9,6 +9,8 @@ exports.createCheckoutSession = async (req, res) => {
       payment_method_types: ['card'],
       line_items: [
         {
+          inclusive: false,
+          percentage: ['{{txr_1Ip9BbKYGE5dRt9i0SM2iR2v}}'],
           price: priceId,
           // For metered billing, do not pass quantity
           quantity: 1,
