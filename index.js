@@ -25,11 +25,7 @@ mongoose
 
 let stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 //registering cors
-let corsOptions = {
-    origin: 'https://skyplus.fr/',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
-app.use(cors(corsOptions));
+app.use(cors());
 //configure body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
