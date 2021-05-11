@@ -23,9 +23,13 @@ mongoose
     console.log({ database_error: err });
   });
 
-var stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+let stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 //registering cors
-app.use(cors());
+let corsOptions = {
+    origin: 'https://skyplus.fr/',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.use(cors(corsOptions));
 //configure body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
