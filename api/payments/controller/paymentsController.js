@@ -18,8 +18,8 @@ exports.createCheckoutSession = async (req, res) => {
       // the actual Session ID is returned in the query parameter when your customer
       // is redirected to the success page.
       success_url:
-        'https://skyplus.fr/paiement-reussi',
-      cancel_url: 'https://skyplus.fr/echec-paiement',
+        'https://cloudtalk.fr/paiement-reussi',
+      cancel_url: 'https://cloudtalk.fr/echec-paiement',
     });
 
     res.send({
